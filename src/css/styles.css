@@ -1,0 +1,487 @@
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-once {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes color-shift {
+  0% {
+    color: #fff;
+  }
+  25% {
+    color: #dbcefd;
+  }
+  50% {
+    color: #9c77f8;
+  }
+  75% {
+    color: #dbcefd;
+  }
+  100% {
+    color: #ffff;
+  }
+}
+
+/* Scrollbar (WebKit browsers only) */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track (background of the scrollbar) */
+
+::-webkit-scrollbar-track {
+  background: var(--color-Grey-08);
+}
+
+/* Thumb (draggable part of the scrollbar) */
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-Purple-60);
+  border-radius: 10px;
+  border: 2px solid var(--color-Purple-60);
+}
+
+/* Thumb hover effect */
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-Purple-75);
+}
+
+/* Firefox support */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-Purple-60) var(--color-Grey-08);
+}
+
+/* Custom Animations*/
+
+/* spin-slow:
+ *    - Rotates the element 360 degrees continuously.
+ *    - Used for slow, infinite spinning effects.
+ *    - Duration: 20s, linear timing, infinite loop.
+ */
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* zoom-slow:
+ *    - Smoothly scales the element up to 105% and back.
+ *    - Creates a gentle pulsing/zooming effect.
+ *    - Duration: 15s, ease-in-out timing, infinite loop.
+ *
+ */
+
+@keyframes zoom-slow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* fade-slide-up:
+ *    - Fades the element in while moving it upward slightly.
+ *    - Used for entry animations like revealing content on load or scroll.
+ *    - Duration: 1s, ease timing, runs once (forwards).
+ */
+
+@keyframes fade-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * scroll animation:
+ * - Creates a continuous horizontal scrolling effect from right to left.
+ * - The content moves from its original position (0%) to completely out of view on the left (-100%).
+ * - Typically used for marquee-style animations or infinite scrolling text/images.
+ */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/*
+ * Utility Classes:
+ *  - .animate-spin-slow: applies the spin-slow animation.
+ *  - .animate-zoom-slow: applies the zoom-slow animation.
+ *  - .animate-fade-slide-up: applies the fade-slide-up animation.
+ *  - .scroll: applies the scroll animation.
+ */
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-zoom-slow {
+  animation: zoom-slow 15s ease-in-out infinite;
+}
+
+.animate-fade-slide-up {
+  animation: fade-slide-up 1s ease forwards;
+}
+
+.scroll {
+  animation: scroll 30s linear infinite;
+  -webkit-animation: scroll 30s linear infinite;
+}
+
+.clip {
+  clip-path: path(
+    "M0,0 H100 V100 H0 Z M50,50 m-25,0 a25,25 0 1,0 50,0 a25,25 0 1,0 -50,0"
+  );
+}
+.cursor-custom-default {
+  cursor: url("/assets/icons/cursor.svg"), auto;
+}
+.cursor-custom-default a,
+.cursor-custom-default button,
+.cursor-custom-default .cursor-pointer {
+  cursor: url("/assets/icons/cursor-pointer.svg"), pointer !important;
+}
+.BackToTop:hover .arrow{
+  animation: back-to-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes back-to-top {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes neon-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px var(--color-Purple-75),
+      0 0 13px var(--color-Purple-60), 0 0 40px var(--color-Purple-60);
+  }
+  50% {
+    text-shadow: 0 0 4px var(--color-Purple-60), 0 0 8px var(--color-Purple-60),
+      0 0 16px var(--color-Purple-60);
+  }
+}
+
+/* ********** */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin_border {
+  from {--angle: -110deg;}
+  to {--angle: -470deg;}
+}
+
+.rotate-conic:hover::before,.rotate-conic:hover::after {
+  content: "";
+  --angle: -110deg;
+  position: absolute;
+  height: 100.5%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 0px;
+  background: conic-gradient(from var(--angle),#bda7f3 10%,transparent 25%,transparent 100%);
+  animation: 3s spin_border linear infinite;
+  z-index: -10;
+}
+
+.rotate-conic::before {
+  filter: blur(0.5rem);
+  opacity: 0.5;
+}
+/* shine effect */
+.group:hover .shine-effect {
+  animation: shine 1s forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+  }
+  100%{
+    display: none;
+    left: 150%;
+  }
+}
+/***/
+@keyframes text-shine {
+  0% {
+    background-position: -400% 0;
+  }
+  100% {
+    background-position: 400% 0;
+  }
+}
+
+@keyframes check-draw {
+    0% {
+        stroke-dasharray: 0 50;
+        stroke-dashoffset: 50;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dasharray: 50 50;
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+/* Track */
+.switch-wrapper .toggle-track {
+  cursor: url("/assets/icons/cursor-pointer.svg"), auto; 
+  box-shadow:0 0 15px #bdace933,inset 0 0 10px rgba(39, 6, 92, 0.8);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .toggle-track::before {
+  background:radial-gradient(ellipse at center, #a685fa1a 0%, rgba(0, 0, 0, 0) 70%),linear-gradient(90deg, rgba(0, 60, 120, 0.1) 0%, rgba(0, 30, 60, 0.2) 100%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .toggle-track::after {
+  background: linear-gradient(90deg,#a685fa4d 0%,rgba(0, 80, 255, 0.1) 100%);
+  filter: blur(1px);
+}
+
+.switch-wrapper .track-line {
+  background: repeating-linear-gradient(90deg,#a685fa4d 0px,#a685fa4d 5px,transparent 5px,transparent 15px
+  );
+  animation: track-line-move 3s linear infinite;
+}
+
+@keyframes track-line-move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(20px); }
+}
+
+/* Thumb */
+.switch-wrapper .toggle-thumb {
+  background: radial-gradient(circle,#a685fae6 0%,#a685facc 100%);
+  box-shadow:0 2px 15px rgba(255, 255, 255, 0.637),inset 0 0 15px #a685fa;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .thumb-core {
+  background: radial-gradient(circle,#a685fa99 0%,#a685fa33 100%
+  );
+  box-shadow: 0 0 20px #a685fa80;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .thumb-inner {
+  background: radial-gradient(circle,rgba(255, 255, 255, 0.8) 0%,#a685fa80 100%);
+  box-shadow: 0 0 10px #a685fab3;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.switch-wrapper .thumb-scan {
+  background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%,#a685fa80 20%,rgba(255, 255, 255, 0.8) 50%,#a685fa80 80%,rgba(0, 0, 0, 0) 100%);
+  animation: thumb-scan 2s linear infinite;
+}
+
+@keyframes thumb-scan {
+  0% { top: -5px; opacity: 0; }
+  20% { opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { top: 54px; opacity: 0; }
+}
+
+.switch-wrapper .thumb-particle {
+  animation: thumb-particle-float 3s infinite ease-out;
+}
+
+@keyframes thumb-particle-float {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(-30px) scale(0); opacity: 0; }
+}
+
+/* Status */
+.switch-wrapper .status-indicator {
+  background: radial-gradient(circle, #9a77f5 0%, #a685fa 100%);
+  box-shadow: 0 0 10px #b496fd;
+  animation: blink 2s infinite alternate;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .status-indicator.on {
+  background: radial-gradient(circle, #a685facc 0%, #a685fa 100%); 
+  box-shadow: 0 0 10px rgba(112, 59, 247, 0.5); 
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Energy rings */
+.switch-wrapper .energy-rings {
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch-wrapper .energy-ring {
+  animation: spin linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Checked state */
+.switch-wrapper .toggle-input:checked + .toggle-track {
+  background: #703bf766;
+  border-color: rgba(112, 59, 247, 0.3); 
+  box-shadow:0 0 15px rgba(112, 59, 247, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track::before {
+  background:radial-gradient(ellipse at center, rgba(112, 59, 247, 0.1) 0%, rgba(0, 0, 0, 0) 70%), linear-gradient(90deg, #703bf71a 0%, #703bf733 100%);
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track::after {
+  background: linear-gradient(90deg,rgba(112, 59, 247, 0.3) 0%, #703bf71a 100%);
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .track-line {
+  background: repeating-linear-gradient( 90deg, rgba(112, 59, 247, 0.3) 0px,  rgba(112, 59, 247, 0.3) 5px,  transparent 5px, transparent 15px);
+  animation-direction: reverse;
+}
+
+.toggle-input:checked + .toggle-track .toggle-thumb {
+  left: calc(100% - 36px);
+  background: radial-gradient(circle, #703bf7e6 0%, #703bf7cc 100%);
+  border-color: rgba(112, 59, 247, 0.6); 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(112, 59, 247, 0.5); 
+}
+@media (max-width: 768px) {
+ .toggle-input:checked + .toggle-track .toggle-thumb {
+  left: calc(100% - 26px);
+}
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .thumb-core {
+  background: radial-gradient(circle,rgba(112, 59, 247, 0.6) 0%, rgba(0, 120, 50, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(112, 59, 247, 0.5); 
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .thumb-inner {
+  background: radial-gradient(circle,rgba(255, 255, 255, 0.8) 0%,#703bf780 100%);
+  box-shadow: 0 0 10px #703bf7b3;
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .thumb-scan {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%,rgba(112, 59, 247, 0.5) 20%, rgba(255, 255, 255, 0.8) 50%,rgba(112, 59, 247, 0.5) 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .thumb-particle {
+  background: #e1d8f8cc;
+  box-shadow: 0 0 5px #e9e2fccc;
+}
+
+.switch-wrapper .toggle-input:checked + .toggle-track .status-indicator.off { opacity: 0; }
+.switch-wrapper .toggle-input:checked + .toggle-track .status-indicator.on  { opacity: 1; }
+
+.switch-wrapper .toggle-input:checked + .toggle-track .energy-rings { left: calc(100% - 28px); }
+.switch-wrapper .toggle-input:checked + .toggle-track .energy-ring { opacity: 1; }
+
+.switch-wrapper .toggle-input:checked + .toggle-track .energy-ring:nth-child(1) {
+  border-top-color: rgba(112, 59, 247, 0.5); 
+  border-right-color: rgba(112, 59, 247, 0.3); 
+}
+.switch-wrapper .toggle-input:checked + .toggle-track .energy-ring:nth-child(2) {
+  border-bottom-color: rgba(112, 59, 247, 0.5); 
+  border-left-color: rgba(112, 59, 247, 0.3); 
+}
+.switch-wrapper .toggle-input:checked + .toggle-track .energy-ring:nth-child(3) {
+  border-left-color: rgba(112, 59, 247, 0.5); 
+  border-top-color: rgba(112, 59, 247, 0.3); 
+}
+
+/* Interface lines color when checked */
+.switch-wrapper .toggle-input:checked + .toggle-track .interface-line {
+  background: rgba(112, 59, 247, 0.3); 
+}
+
+/* Optional label color when checked */
+.switch-wrapper .toggle-input:checked ~ .toggle-label {
+  color: rgba(112, 59, 247, 0.7); 
+  text-shadow: 0 0 10px rgba(112, 59, 247, 0.5); 
+}
+
+/* Holo glow when checked */
+.switch-wrapper .toggle-input:checked + .toggle-track .holo-glow {
+  background: radial-gradient(ellipse at center, rgba(112, 59, 247, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* Hover */
+.switch-wrapper .toggle-input:hover + .toggle-track {
+  box-shadow: 0 0 20px rgba(174, 93, 250, 0.3),inset 0 0 10px rgba(116, 58, 170, 0.8);
+}
+
+.switch-wrapper .toggle-input:checked:hover + .toggle-track {
+  box-shadow: 0 0 20px rgba(112, 59, 247, 0.3),inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+/**overlay footer wrapper***/
+/* @keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+} */
+/***/
+.futuristic-pattern {
+  filter: url(#advanced-texture);
+}

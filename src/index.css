@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "./css/styles.css";
+
+/* Default theme: Dark Mode */
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+    /* Colors */
+    /* Absolute Colors */
+    --color-White: #ffffff;
+    /* Purple Shades */
+    --color-Purple-60: #703bf7;
+    --color-Purple-65: #8254f8;
+    --color-Purple-70: #946cf9;
+    --color-Purple-75: #a685fa;
+    --color-Purple-90: #dbcefd;
+    --color-Purple-95: #ede7fe;
+    --color-Purple-97: #f4f0fe;
+    --color-Purple-99: #fcfcfd;
+    /* Grey Shades */
+    --color-Grey-08: #141414;
+    --color-Grey-10: #1a1a1a;
+    --color-Grey-15: #262626;
+    --color-Grey-20: #333333;
+    --color-Grey-30: #4d4d4d;
+    --color-Grey-40: #666666;
+    --color-Grey-50: #808080;
+    --color-Grey-60: #999999;
+    --color-Grey-70: #0a0a0a80;
+    /* ____________________ */
+    /* White Shades */
+    --color-White-90: #e4e4e7;
+    --color-White-95: #f1f1f3;
+    --color-White-97: #f7f7f8;
+    --color-White-99: #fcfcfd;
+    /* Spacing */
+    --spacing-pc: 8.4375%;
+    --spacing-xl: 5.5555%;
+    --spacing-mobile: 16px;
+    /* Screens */
+    --breakpoint-xs: 389px;
+    --breakpoint-md: 769px;
+    --breakpoint-lg: 1025px;
+    --breakpoint-xl: 1441px;
+    --breakpoint-2xl: 1921px;
+}
+
+
+/* Light mode overrides */
+
+.light {
+    /* Absolute Colors */
+    --color-White: #322a49;
+    /* #1f192f */
+    /* Purple Shades — keep unchanged */
+    /* no override needed */
+    /* Grey Shades → flipped to light greys */
+    --color-Grey-08: #f7f7f8;
+    /* Was #141414 */
+    --color-Grey-10: #ede7fe;
+    /* Was #1A1A1A */
+    --color-Grey-15: #dbcefd;
+    /* Was #262626 */
+    --color-Grey-20: #dbcefd;
+    /* Was #333333 */
+    --color-Grey-30: #cccccc;
+    /* Was #4D4D4D */
+    --color-Grey-40: #a685fa;
+    /* Was #666666 */
+    --color-Grey-50: #808080;
+    /* Same (neutral) */
+    --color-Grey-60: #666666;
+    /* Was #999999 */
+    /* White Shades → flipped to darks for text/bg */
+    --color-White-90: #333333;
+    /* Was #E4E4E7 */
+    --color-White-95: #262626;
+    /* Was #F1F1F3 */
+    --color-White-97: #1a1a1a;
+    /* Was #F7F7F8 */
+    --color-White-99: #141414;
+    /* Was #FCFCFD */
+}
+
+
+/* Utility class */
+
+@layer utilities {
+    .font-urbanist {
+        font-family: "Urbanist", sans-serif;
+    }
+    .animate-rotate {
+        animation: rotate 10s linear infinite;
+    }
+    .animate-pulse-once {
+        animation: pulse-once 0.6s ease-in-out;
+    }
+    .hover-glow:hover {
+        box-shadow: 0 0 12px #8354f880;
+        transition: box-shadow 0.3s ease;
+    }
+    .text-animate {
+        animation: color-shift 10s linear infinite;
+        color: white;
+    }
+    .custom-border {
+        border: 1px solid;
+        border-image-source: linear-gradient(0deg, #262626, #262626), linear-gradient(117.89deg, #703bf7 0%, rgba(112, 59, 247, 0) 24%);
+        border-image-slice: 1;
+    }
+    .animate-neon {
+        animation: neon-pulse 2.8s ease-in-out infinite;
+    }
+    .animate-check {
+        animation: check-draw 0.6s ease-in-out forwards;
+    }
+    .neon-glow {
+        box-shadow: 0 0 20px rgba(112, 59, 247, 0.3), 0 0 40px rgba(112, 59, 247, 0.1);
+    }
+    .neon-text-glow {
+        text-shadow: 0 0 10px rgba(112, 59, 247, 0.8), 0 0 20px rgba(112, 59, 247, 0.4);
+    }
+    .neon-border-glow {
+        box-shadow: inset 0 0 20px rgba(112, 59, 247, 0.1), 0 0 20px rgba(112, 59, 247, 0.2);
+    }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" class="font-urbanist">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/assets/Symbol.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="var(bg-Grey-08)" />
+    <title>Estatein</title>
+    <style>
+        /* minimal inline splash styles */
+        
+        #splash-root {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(60% 60% at 50% 40%, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.55) 58%, rgba(10, 10, 10, 0.85) 100%), linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.7) 100%);
+            z-index: 9999;
+        }
+        
+        .splash-spinner {
+            width: 64px;
+            height: 64px;
+            position: relative;
+        }
+        
+        .splash-spinner:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 4px solid rgba(112, 59, 247, 0.15);
+            box-shadow: 0 0 14px #703BF7, 0 0 28px #703BF7, inset 0 0 12px rgba(112, 59, 247, 0.35);
+        }
+        
+        .splash-spinner:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 4px solid transparent;
+            border-top-color: #703BF7;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 10px #703BF7, 0 0 18px #703BF7;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-Grey-08 text-White">
+    <div id="splash-root">
+        <div class="splash-spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
